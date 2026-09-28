@@ -1,0 +1,27 @@
+{
+  "name": "student-file-compressor",
+  "version": "1.0.0",
+  "description": "A student-friendly Node.js mini project for compressing files to a user-selected target size.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "keywords": [
+    "nodejs",
+    "file-compression",
+    "express",
+    "multer",
+    "sharp",
+    "pdf"
+  ],
+  "author": "Student Project",
+  "license": "MIT",
+  "dependencies": {
+    "compression": "^1.8.1",
+    "express": "^5.1.0",
+    "multer": "^2.0.2",
+    "pdf-lib": "^1.17.1",
+    "sharp": "^0.34.3"
+  }
+}

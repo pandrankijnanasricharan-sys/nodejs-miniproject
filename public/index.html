@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FileShrink - Target Size Compressor</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="container">
+      <p class="badge">NODE.JS MINI PROJECT</p>
+      <h1>FileShrink</h1>
+      <p class="subtitle">
+        Choose a file, see its original size immediately, set your desired size,
+        and let the server compress it.
+      </p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>File Compression</h2>
+
+      <div class="compression-layout">
+        <div class="panel">
+          <h3>1. Select File</h3>
+          <label class="file-box" for="file">
+            <span class="file-icon">+</span>
+            <strong id="fileLabel">Choose a file</strong>
+            <small>Maximum upload size: 50 MB</small>
+          </label>
+          <input id="file" name="file" type="file" />
+        </div>
+
+        <div class="panel size-panel">
+          <h3>2. File Size</h3>
+
+          <div class="size-row">
+            <div class="size-box">
+              <span>Original size</span>
+              <strong id="originalSizePreview">--</strong>
+            </div>
+
+            <div class="arrow">→</div>
+
+            <div class="target-box">
+              <span>Target size</span>
+              <div class="target-input">
+                <input id="targetValue" type="number" min="1" step="0.01" placeholder="e.g. 2" />
+                <select id="targetUnit">
+                  <option value="KB">KB</option>
+                  <option value="MB" selected>MB</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <p id="targetHint" class="hint">
+            Select a file first. The target must be smaller than the original.
+          </p>
+        </div>
+      </div>
+
+      <div class="quality-area">
+        <label for="quality">
+          Starting image quality:
+          <strong><span id="qualityValue">70</span>%</strong>
+        </label>
+        <input id="quality" type="range" min="20" max="95" value="70" />
+        <p>
+          For images, the application automatically adjusts quality and dimensions
+          to try to reach your target. This setting is the starting preference.
+        </p>
+      </div>
+
+      <button id="compressButton" type="button" disabled>
+        Compress to Target Size
+      </button>
+    </section>
+
+    <section id="loading" class="card hidden">
+      <div class="spinner"></div>
+      <p>Compressing to your requested size...</p>
+    </section>
+
+    <section id="result" class="card hidden">
+      <h2>Compression Result</h2>
+
+      <div class="result-grid">
+        <div>
+          <span>Original file</span>
+          <strong id="resultName">-</strong>
+        </div>
+        <div>
+          <span>Original size</span>
+          <strong id="resultOriginal">-</strong>
+        </div>
+        <div>
+          <span>Your target</span>
+          <strong id="resultTarget">-</strong>
+        </div>
+        <div>
+          <span>Final size</span>
+          <strong id="resultCompressed">-</strong>
+        </div>
+        <div>
+          <span>Size reduction</span>
+          <strong id="resultReduction">-</strong>
+        </div>
+      </div>
+
+      <div id="message" class="message"></div>
+
+      <a id="downloadButton" class="download" href="#" download>
+        Download Compressed File
+      </a>
+    </section>
+
+    <section class="card explanation">
+      <h2>How it works</h2>
+
+      <div class="steps">
+        <div class="step">
+          <b>1</b>
+          <h3>Select</h3>
+          <p>The browser reads the selected file's size immediately.</p>
+        </div>
+        <div class="step">
+          <b>2</b>
+          <h3>Set target</h3>
+          <p>You decide how small the output should be.</p>
+        </div>
+        <div class="step">
+          <b>3</b>
+          <h3>Compress</h3>
+          <p>The server chooses a method based on the file type.</p>
+        </div>
+        <div class="step">
+          <b>4</b>
+          <h3>Download</h3>
+          <p>You see the final size and download the result.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Important note</h2>
+      <p>
+        A target size is a goal, not a mathematical guarantee for every file type.
+        Images can be adjusted by changing quality and dimensions. PDFs and already
+        compressed formats may not be able to reach an arbitrarily small target
+        without changing their contents.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>FileShrink &mdash; Educational Node.js Mini Project</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
